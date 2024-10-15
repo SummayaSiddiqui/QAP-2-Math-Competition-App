@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+<body>
+    <div class="completion_content">
+        <h1>Quiz Completed!</h1>
+
+        <div class="completion_container">
+            <p>Your total correct answers (streak): <strong><%= streak %></strong></p>
+            <div class="start_button">
+                <!-- Option to return to home page -->
+                <a href="/quiz" class="start_link">Start New Quiz</a>
+            </div>
+        </div>
+        
+        <div class="home_button">
+                <!-- Option to return to home page -->
+                <a href="/" class="home_link">Return to Home</a>
+        </div>
+    </div>
+</body>
+</html>

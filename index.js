@@ -18,30 +18,33 @@ app.get("/", (req, res) => {
 // Quiz route
 app.get("/quiz", (req, res) => {
   const { question } = getQuestion(); // Get a random math question
-  const streak = 0; // Initialize streak to 0 when quiz starts
   const correctAnswers = 0; // Initialize correct answers to 0 when quiz starts
-  res.render("quiz", { question, streak, correctAnswers });
+  res.render("quiz", { question, correctAnswers });
 });
 
 // Handle quiz submissions
 app.post("/quiz", (req, res) => {
   const { answer, correctAnswers, question } = req.body;
-  const { question: newQuestion } = getQuestion();
-
   let correctAnswerCount = parseInt(correctAnswers, 10); // Convert correct answers to a number
 
   // Check if the user's answer is correct
   if (isCorrectAnswer(question, answer)) {
     correctAnswerCount += 1; // Increment correct answers count if correct
+    const { question: newQuestion } = getQuestion(); // Get a new question
+    res.render("quiz", {
+      question: newQuestion,
+      correctAnswers: correctAnswerCount,
+    });
   } else {
-    currentStreak = 0; // Reset streak if incorrect
+    // If answer is wrong, redirect to the completion page
+    res.redirect(`/completion?streak=${correctAnswerCount}`);
   }
+});
 
-  // Render the next question with updated streak and correct answers count
-  res.render("quiz", {
-    question: newQuestion,
-    correctAnswers: correctAnswerCount,
-  });
+// Completion route
+app.get("/completion", (req, res) => {
+  const streak = req.query.streak; // Get streak from query parameters
+  res.render("completion", { streak });
 });
 
 // Start the server

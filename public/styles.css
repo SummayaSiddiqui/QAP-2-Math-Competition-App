@@ -118,3 +118,32 @@ button:hover {
 .home_link:hover {
   background-color: #e0e0e0;
 }
+
+.completion_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  text-align: center;
+}
+
+.completion_container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  color: #5d8efb;
+}
+
+.start_button {
+  margin-top: 20px;
+}
+
+.start_link {
+  background-color: #5d8efb;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+}

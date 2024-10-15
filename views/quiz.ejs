@@ -4,8 +4,13 @@
         <h1>Math Quiz</h1>
 
         <div class="quiz_container">
-            <!-- Display cnumber of correct answers -->
-            <p><strong>Current Streak = Total Correct Answers: <%= correctAnswers || 0 %></strong></p>
+            <!-- Display number of correct answers -->
+            <p><strong>Total Correct Answers: <%= correctAnswers || 0 %></strong></p>
+
+            <!-- Show message if there is any feedback -->
+            <% if (typeof message !== "undefined") { %>
+                <p style="color: red;"><strong><%= message %></strong></p>
+            <% } %>
 
             <p><strong>Question:</strong> <%= question %></p>
 
