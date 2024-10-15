@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 // Import the math utilities
-const { getQuestion } = require("./utils/mathUtilities");
+const { getQuestion, isCorrectAnswer } = require("./utils/mathUtilities");
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true })); // For parsing form data
@@ -18,18 +18,30 @@ app.get("/", (req, res) => {
 // Quiz route
 app.get("/quiz", (req, res) => {
   const { question } = getQuestion(); // Get a random math question
-  res.render("quiz", { question }); // Pass the question to the view
+  const streak = 0; // Initialize streak to 0 when quiz starts
+  const correctAnswers = 0; // Initialize correct answers to 0 when quiz starts
+  res.render("quiz", { question, streak, correctAnswers });
 });
 
-//Handles quiz submissions.
+// Handle quiz submissions
 app.post("/quiz", (req, res) => {
-  const { answer } = req.body;
-  console.log(`Answer: ${answer}`);
+  const { answer, correctAnswers, question } = req.body;
+  const { question: newQuestion } = getQuestion();
 
-  //answer will contain the value the user entered on the quiz page
-  //Logic must be added here to check if the answer is correct, then track the streak and redirect properly
-  //By default we'll just redirect to the homepage again.
-  res.redirect("/");
+  let correctAnswerCount = parseInt(correctAnswers, 10); // Convert correct answers to a number
+
+  // Check if the user's answer is correct
+  if (isCorrectAnswer(question, answer)) {
+    correctAnswerCount += 1; // Increment correct answers count if correct
+  } else {
+    currentStreak = 0; // Reset streak if incorrect
+  }
+
+  // Render the next question with updated streak and correct answers count
+  res.render("quiz", {
+    question: newQuestion,
+    correctAnswers: correctAnswerCount,
+  });
 });
 
 // Start the server

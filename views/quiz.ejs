@@ -1,22 +1,26 @@
-<!-- The header ejs template is included to ensure our CSS and fonts are loaded -->
 <%- include('partials/header') %>
 <body>
     <div class="quiz_content">
-        <!-- Display question or whatever else here -->
         <h1>Math Quiz</h1>
-        
+
         <div class="quiz_container">
-            <p>Answer the question below:</p>
-            <!-- Display the current math question here -->
+            <!-- Display cnumber of correct answers -->
+            <p><strong>Current Streak = Total Correct Answers: <%= correctAnswers || 0 %></strong></p>
+
             <p><strong>Question:</strong> <%= question %></p>
+
             <form action="/quiz" method="POST">
                 <label for="answer">Your Answer:</label>
                 <input type="text" id="answer" name="answer" required>
+
+                <!-- Hidden inputs to track the correct answers and pass the current question -->
+                <input type="hidden" name="question" value="<%= question %>">
+                <input type="hidden" name="correctAnswers" value="<%= correctAnswers || 0 %>">
+                
                 <button type="submit">Submit</button>
             </form>
         </div>
 
-        <!-- Link to home page -->
         <div class="home_button">
             <a href="/" class="home_link">Return to Home</a>
         </div>
