@@ -11,14 +11,14 @@ function getQuestion() {
   operation = operations[Math.floor(Math.random() * operations.length)];
   switch (operation) {
     case "+":
-      num1 = Math.floor(Math.random() * 100) + 1; // Random number between 1 and 100
-      num2 = Math.floor(Math.random() * 100) + 1; // Random number between 1 and 100
+      num1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 100
+      num2 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 100
       question = `${num1} + ${num2}`;
       answer = num1 + num2;
       break;
     case "-":
       // Ensure num1 is greater than num2
-      num1 = Math.floor(Math.random() * 100) + 1; // Random number between 1 and 100
+      num1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 100
       num2 = Math.floor(Math.random() * num1) + 1; // Random number between 1 and num1
       question = `${num1} - ${num2}`;
       answer = num1 - num2;

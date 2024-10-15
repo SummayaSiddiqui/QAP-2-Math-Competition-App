@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+<body>
+    <div class="leaderboard_content">
+        <h1>Leaderboards</h1>
+
+        <div class="leaderboard_container">
+            <table class="leaderboard_table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Streak</th>
+                        <th>Date Achieved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < Math.min(leaderboard.length, 10); i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= leaderboard[i].streak %></td>
+                            <td><%= leaderboard[i].date %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="home_button">
+            <a href="/" class="home_link">Return to Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -147,3 +147,42 @@ button:hover {
   text-decoration: none;
   color: white;
 }
+
+.leaderboard_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  text-align: center;
+}
+
+.leaderboard_container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  color: #5d8efb;
+}
+
+.leaderboard_table {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+}
+
+.leaderboard_table th,
+.leaderboard_table td {
+  padding: 15px;
+  border: 1px solid #ddd;
+}
+
+.leaderboard_table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.leaderboard_table tr:hover {
+  background-color: #ddd; /* Only hover effect remains */
+}
