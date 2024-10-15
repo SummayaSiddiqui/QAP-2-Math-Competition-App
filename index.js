@@ -12,7 +12,8 @@ app.use(express.static("public")); // To serve static files (e.g., CSS)
 // Some routes required for full functionality are missing here. Only get routes should be required
 // Home route
 app.get("/", (req, res) => {
-  res.render("index");
+  const streak = req.query.streak ? parseInt(req.query.streak, 10) : 0; // Parse streak from query, default to 0
+  res.render("index", { streak }); // Pass streak to the view
 });
 
 // Quiz route

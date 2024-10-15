@@ -5,12 +5,7 @@
 
         <div class="quiz_container">
             <!-- Display number of correct answers -->
-            <p><strong>Total Correct Answers: <%= correctAnswers || 0 %></strong></p>
-
-            <!-- Show message if there is any feedback -->
-            <% if (typeof message !== "undefined") { %>
-                <p style="color: red;"><strong><%= message %></strong></p>
-            <% } %>
+            <p><strong>Current Streak = Total Correct Answers: <%= correctAnswers || 0 %></strong></p>
 
             <p><strong>Question:</strong> <%= question %></p>
 

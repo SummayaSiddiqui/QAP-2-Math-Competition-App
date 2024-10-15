@@ -7,18 +7,18 @@
 
         <!-- Streak container -->
         <div class="streak_container">
-            <p>No streak exists. Start a quiz to begin.</p>
+            <% if (streak > 0) { %>
+                <p>Your current streak is: <%= streak %></p>
+            <% } else { %>
+                <p>No streak exists. Start a quiz to begin!</p>
+            <% } %>
         </div>
 
         <!-- Navigation container -->
-         <div class="index_container">
+        <div class="index_container">
             <div class="navigation_container">
-                <a href="/leaderboards">
-                    View Leaderboards
-                </a>
-                <a href="/quiz">
-                    Start Quiz
-                </a>
+                <a href="/leaderboards">View Leaderboards</a>
+                <a href="/quiz">Start Quiz</a>
             </div>
         </div>
     </div>
